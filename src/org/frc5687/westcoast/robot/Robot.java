@@ -13,6 +13,7 @@ import org.frc5687.westcoast.robot.subsystems.DriveTrain;
 public class Robot extends TimedRobot {
     private AHRS _imu;
     private DriveTrain _driveTrain;
+    private OI _oi;
 
     @Override
     public void robotInit() {
@@ -20,9 +21,10 @@ public class Robot extends TimedRobot {
         LiveWindow.disableAllTelemetry();
 
         _imu = new AHRS(SPI.Port.kMXP, (byte) 100);
-        _driveTrain = new DriveTrain();
-
+        _oi = new OI();
+        _driveTrain = new DriveTrain(_oi, _imu);
     }
+
     @Override
     public void teleopInit() {
     }
