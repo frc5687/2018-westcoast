@@ -13,7 +13,13 @@ public class DriveArm extends Command {
         requires(arm);
     }
     @Override
-    protected  void execute(){}
+    protected  void execute(){
+        /*
+        waiting on OI to finish
+        double speed = _oi.getArmSpeed();
+        _arm.drive(speed);
+        */
+    }
 
     @Override
     protected boolean isFinished() {
