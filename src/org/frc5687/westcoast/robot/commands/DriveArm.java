@@ -1,12 +1,19 @@
 package org.frc5687.westcoast.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.frc5687.westcoast.robot.OI;
+import org.frc5687.westcoast.robot.subsystems.Arm;
 
 public class DriveArm extends Command {
-    
-    public DriveArm(){
-
+    private OI _oi;
+    private Arm _arm;
+    public DriveArm(OI oi, Arm arm){
+        _oi = oi;
+        _arm = arm;
+        requires(arm);
     }
+    @Override
+    protected  void execute(){}
 
     @Override
     protected boolean isFinished() {
