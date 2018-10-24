@@ -10,4 +10,14 @@ public class OI {
     }
 
 
+    public double getLeftSpeed() {
+        // TODO: Implement!
+        return 0;
+    }
+
+    public double getRightSpeed() {
+        // TODO: Implement!
+        return 0;
+    }
+
 }
