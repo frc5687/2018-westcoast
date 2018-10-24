@@ -11,12 +11,22 @@ public class OI {
 
 
     public double getLeftSpeed() {
-        // TODO: Implement!
+        double speed = -getSpeedFromAxis(_driverGamepad, Gamepad.Axes.LEFT_Y.getNumber());
+        speed = Helpers.applyDeadband(speed, Constants.DriveTrain.DEADBAND);
+        SmartDashboard.putNumber("DriveTrain/LeftRaw", speed);
+        double sensitivity = _gear == Shifter.Gear.LOW ? Constants.DriveTrain.SENSITIVITY_LOW_GEAR : Constants.DriveTrain.SENSITIVITY_HIGH_GEAR;
+        speed = Helpers.applySensitivityFactor(speed, sensitivity);
+        SmartDashboard.putNumber("DriveTrain/LeftScaled", speed);
         return 0;
     }
 
     public double getRightSpeed() {
-        // TODO: Implement!
+        double speed = -getSpeedFromAxis(_driverGamepad, Gamepad.Axes.RIGHT_Y.getNumber());
+        speed = Helpers.applyDeadband(speed, Constants.DriveTrain.DEADBAND);
+        SmartDashboard.putNumber("DriveTrain/RightRaw", speed);
+        double sensitivity = _gear == Shifter.Gear.LOW ? Constants.DriveTrain.SENSITIVITY_LOW_GEAR : Constants.DriveTrain.SENSITIVITY_HIGH_GEAR;
+        speed = Helpers.applySensitivityFactor(speed, sensitivity);
+        SmartDashboard.putNumber("DriveTrain/RightScaled", speed);
         return 0;
     }
 
