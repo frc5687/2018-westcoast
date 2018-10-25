@@ -84,6 +84,11 @@ public class DriveTrain extends Subsystem {
         // TODO: Implement tank drive logic here!
     }
 
+    public void arcadeDrive(double speed, double rotation) {
+        // TODO: Implement arcade drive logic here!
+    }
+
+
     /**
      * Get the number of ticks since the last reset
      * @return

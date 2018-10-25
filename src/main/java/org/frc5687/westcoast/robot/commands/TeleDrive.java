@@ -24,11 +24,13 @@ public class TeleDrive extends Command {
         switch (_driveTrain.getDriveMode()) {
             case ARCADE:
                 // Get the base speed from the throttle
+                double speed = _oi.getDriveSpeed();
 
                 // Get the rotation from the tiller
+                double rotation = _oi.getDriveRotation();
 
                 // Call the drivetrain
-                // _driveTrain.arcadeDrive(speed, rotation);
+                _driveTrain.arcadeDrive(speed, rotation);
                 break;
 
             case TANK:

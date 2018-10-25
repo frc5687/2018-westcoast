@@ -20,4 +20,14 @@ public class OI {
         return 0;
     }
 
+    public double getDriveSpeed() {
+        // TODO: Implement!
+        return 0;
+    }
+
+    public double getDriveRotation() {
+        // TODO: Implement!
+        return 0;
+    }
+
 }
