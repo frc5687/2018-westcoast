@@ -11,7 +11,6 @@ public class Arm extends Subsystem {
     private VictorSP _motor;
     @Override
     protected void initDefaultCommand() {
-
     }
     public void drive(double speed){
         _motor.setSpeed(speed);
