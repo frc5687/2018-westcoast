@@ -32,7 +32,6 @@ workbench.xmi
 # IDE
 *.iws
 *.ipr
-*.iml
 .idea/
 out/
 tmp/
