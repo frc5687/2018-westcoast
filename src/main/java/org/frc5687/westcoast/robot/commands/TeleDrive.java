@@ -20,10 +20,25 @@ public class TeleDrive extends Command {
 
     @Override
     protected void execute() {
-        double leftSpeed = _oi.getLeftSpeed();
-        double rightSpeed = _oi.getRightSpeed();
 
-        _driveTrain.tankDrive(leftSpeed, rightSpeed);
+        switch (_driveTrain.getDriveMode()) {
+            case ARCADE:
+                // Get the base speed from the throttle
+
+                // Get the rotation from the tiller
+
+                // Call the drivetrain
+                // _driveTrain.arcadeDrive(speed, rotation);
+                break;
+
+            case TANK:
+                double leftSpeed = _oi.getLeftSpeed();
+                double rightSpeed = _oi.getRightSpeed();
+
+                _driveTrain.tankDrive(leftSpeed, rightSpeed);
+                break;
+        }
+
     }
 
     @Override
