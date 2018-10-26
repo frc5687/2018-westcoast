@@ -14,11 +14,9 @@ public class DriveArm extends Command {
     }
     @Override
     protected void execute(){
-        /*
-        waiting on OI to finish
         double speed = _oi.getArmSpeed();
         _arm.drive(speed);
-        */
+
     }
 
     @Override

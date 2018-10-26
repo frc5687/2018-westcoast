@@ -49,6 +49,10 @@ public class Constants {
             public static final double INCHES_PER_PULSE = DistancePerPulse.INCHES;
 
         }
-
+    }
+    public static class Arm {
+        public static final double DEADBAND = 0.1;
+        public static final double SPEED_MAX = 1.0;
+        public static final double SENSITIVITY = 0.75;
     }
 }
