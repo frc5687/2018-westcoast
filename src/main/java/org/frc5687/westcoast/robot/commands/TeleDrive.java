@@ -20,14 +20,14 @@ public class TeleDrive extends Command {
 
     @Override
     protected void execute() {
-
+        DriveTrain.DriveMode driveMode = _driveTrain.getDriveMode();
         switch (_driveTrain.getDriveMode()) {
             case ARCADE:
                 // Get the base speed from the throttle
-                double speed = _oi.getDriveSpeed();
+                double speed = _oi.getDriveSpeed(driveMode);
 
                 // Get the rotation from the tiller
-                double rotation = _oi.getDriveRotation();
+                double rotation = _oi.getDriveRotation(driveMode);
 
                 // Call the drivetrain
                 _driveTrain.arcadeDrive(speed, rotation);
