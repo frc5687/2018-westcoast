@@ -54,5 +54,11 @@ public class Constants {
         public static final double DEADBAND = 0.1;
         public static final double SPEED_MAX = 1.0;
         public static final double SENSITIVITY = 0.75;
+
+        //Currently using numbers from Gizmo, will be changed.
+        public static final double ANGLE_MIN = -110;
+        public static final double ANGLE_MAX = 110;
+        public static final double POT_MIN = 0.065;
+        public static final double POT_MAX = 0.695;
     }
 }

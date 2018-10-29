@@ -16,7 +16,7 @@ public class RobotMap {
     }
 
     public static class PCM {
-/*        public static final int LEFT_PINCER_OPEN = 0;
+/*      public static final int LEFT_PINCER_OPEN = 0;
         public static final int LEFT_PINCER_CLOSE = 1;
         public static final int RIGHT_PINCER_OPEN = 2;
         public static final int RIGHT_PINCER_CLOSE = 3;
