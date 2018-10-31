@@ -1,5 +1,6 @@
 package org.frc5687.westcoast.robot.utils;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
@@ -12,14 +13,36 @@ public class AnglePotentiometer implements PIDSource {
     private double _minAngle;
     private AnalogPotentiometer _potentiometer;
     private double _scale;
+    private double _maxAngle;
+    private double _topValue;
+
+
 
     public AnglePotentiometer(int channel, double bottomAngle, double bottomValue, double topAngle, double topValue) {
         _scale = (topAngle - bottomAngle) / (topValue - bottomValue) ;
         _minAngle = bottomAngle;
+        _maxAngle = topAngle;
         _bottomValue = bottomValue;
+
 
         _potentiometer =  new AnalogPotentiometer(channel);
     }
+    public void recalibrate (double bottomValue, double topValue){
+        _scale = (_maxAngle - _minAngle) / (topValue - bottomValue) ;
+        _bottomValue = bottomValue;
+    }
+
+    public void restTop () {
+        double topValue = getRaw();
+        _scale = (_maxAngle - _minAngle) / (topValue - _bottomValue);
+        _topValue = topValue;
+    }
+    public void restBottom () {
+        double bottomValue = getRaw();
+        _scale = (_maxAngle - _minAngle) / (_topValue - bottomValue);
+        _bottomValue = bottomValue;
+    }
+
 
     public double get() {
         return _minAngle + (_potentiometer.get() - _bottomValue) * _scale;
