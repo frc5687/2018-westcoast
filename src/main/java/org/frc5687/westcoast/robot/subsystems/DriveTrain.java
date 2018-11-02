@@ -11,6 +11,8 @@ import org.frc5687.westcoast.robot.OI;
 import org.frc5687.westcoast.robot.RobotMap;
 import org.frc5687.westcoast.robot.commands.TeleDrive;
 
+import static org.frc5687.westcoast.robot.utils.Helpers.limit;
+
 public class DriveTrain extends Subsystem {
 
     // Subsystem references here
@@ -83,6 +85,45 @@ public class DriveTrain extends Subsystem {
     public void tankDrive(double leftSpeed, double rightSpeed) {
         // TODO: Implement tank drive logic here!
     }
+
+    public void arcadeDrive(double speed, double rotation) {
+
+
+
+        speed = limit(speed);
+
+        rotation = limit(rotation);
+
+        speed = Math.copySign(speed * speed, speed);
+        rotation = Math.copySign(rotation * rotation, rotation);
+
+        double leftMotorOutput;
+        double rightMotorOutput;
+
+        double maxInput = Math.copySign(Math.max(Math.abs(speed), Math.abs(rotation)), speed);
+
+        if (speed >= 0.0) {
+
+            if (rotation >= 0.0) {
+                leftMotorOutput = maxInput;
+                rightMotorOutput = speed - rotation;
+            } else {
+                leftMotorOutput = speed - rotation;
+                rightMotorOutput = maxInput;
+            }
+        } else {
+            if (rotation >= 0.0) {
+                leftMotorOutput = speed - rotation;
+                rightMotorOutput = maxInput;
+            } else {
+                leftMotorOutput = maxInput;
+                rightMotorOutput = speed - rotation;
+            }
+        }
+        // Currently don't have "setPower" method
+        // setPower(leftMotorOutput, rightMotorOutput);
+    }
+
 
     /**
      * Get the number of ticks since the last reset

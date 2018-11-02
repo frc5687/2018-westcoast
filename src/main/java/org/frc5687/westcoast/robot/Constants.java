@@ -68,4 +68,14 @@ public class Constants {
         public static final double POT_MAX = 0.695;
         public static final boolean MOTOR_INVERTED = false;
     }
+    public class Shifter {
+        public static final long STOP_MOTOR_TIME = 60;
+        public static final long SHIFT_TIME = 60;
+
+        public static final double SHIFT_UP_THRESHOLD = 50; // in inches per second TODO tune
+        public static final double SHIFT_DOWN_THRESHOLD = 40; //in inches per second TODO tune
+
+        public static final long AUTO_WAIT_PERIOD = 500;
+        public static final long MANUAL_WAIT_PERIOD = 3000;
+    }
 }

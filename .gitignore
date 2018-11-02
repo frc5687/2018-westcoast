@@ -15,7 +15,7 @@
 !navx_frc.jar
 *.war
 *.ear
-*.zip
+*.zips
 *.tar.gz
 *.rar
 
@@ -32,6 +32,7 @@ workbench.xmi
 # IDE
 *.iws
 *.ipr
+*.iml
 .idea/
 out/
 tmp/
