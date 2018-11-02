@@ -4,17 +4,19 @@ import edu.wpi.first.wpilibj.Joystick;
 import org.frc5687.westcoast.robot.subsystems.DriveTrain;
 import org.frc5687.westcoast.robot.subsystems.Shifter;
 import org.frc5687.westcoast.robot.utils.Gamepad;
-import org.frc5687.westcoast.robot.utils.Helpers;
+import static org.frc5687.westcoast.robot.utils.Helpers.*;
+import org.frc5687.westcoast.robot.Constants;
 
-import static org.frc5687.westcoast.robot.utils.Helpers.applyDeadband;
-import static org.frc5687.westcoast.robot.utils.Helpers.applySensitivityFactor;
 
 
 public class OI {
     protected Gamepad _driverGamepad;
+    protected Gamepad _operatorGamepad;
+
 
     public OI(){
         _driverGamepad = new Gamepad(0);
+        _operatorGamepad = new Gamepad(1);
     }
 
     private Shifter.Gear _gear = Shifter.Gear.LOW;
@@ -22,9 +24,9 @@ public class OI {
 
     public double getLeftSpeed() {
         double speed = -getSpeedFromAxis(_driverGamepad, Gamepad.Axes.LEFT_Y.getNumber());
-        speed = Helpers.applyDeadband(speed, Constants.DriveTrain.DEADBAND);
+        speed = applyDeadband(speed, Constants.DriveTrain.DEADBAND);
         double sensitivity = _gear == Shifter.Gear.LOW ? Constants.DriveTrain.SENSITIVITY_LOW_GEAR : Constants.DriveTrain.SENSITIVITY_HIGH_GEAR;
-        speed = Helpers.applyDeadband(speed, sensitivity);
+        speed = applyDeadband(speed, sensitivity);
 
 
         return speed;
@@ -33,11 +35,16 @@ public class OI {
 
     public double getRightSpeed() {
         double speed = -getSpeedFromAxis(_driverGamepad, Gamepad.Axes.RIGHT_Y.getNumber());
-        speed = Helpers.applyDeadband(speed, Constants.DriveTrain.DEADBAND);
+        speed = applyDeadband(speed, Constants.DriveTrain.DEADBAND);
         double sensitivity = _gear == Shifter.Gear.LOW ? Constants.DriveTrain.SENSITIVITY_LOW_GEAR : Constants.DriveTrain.SENSITIVITY_HIGH_GEAR;
-        speed = Helpers.applySensitivityFactor(speed, sensitivity);
+        speed = applySensitivityFactor(speed, sensitivity);
 
         return speed;
+    }
+    public double getArmSpeed(){
+        double speed = -getSpeedFromAxis(_operatorGamepad, 5) * Constants.Arm.SPEED_MAX;
+        speed = applyDeadband(speed, Constants.Arm.DEADBAND);
+        return applySensitivityFactor(speed, Constants.Arm.SENSITIVITY);
     }
 
     public double getDriveSpeed(DriveTrain.DriveMode driveMode) {

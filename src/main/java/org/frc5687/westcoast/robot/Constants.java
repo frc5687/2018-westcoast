@@ -49,7 +49,24 @@ public class Constants {
             public static final double INCHES_PER_PULSE = DistancePerPulse.INCHES;
 
         }
+    }
+    public static class Arm {
+        public static final double DEADBAND = 0.1;
+        public static final double SPEED_MAX = 1.0;
+        public static final double SENSITIVITY = 0.75;
 
+        public static final double FRONT_FLAT = 90.0;
+        public static final double FRONT_SWITCH = 30.0;
+        public static final double UP = 0;
+        public static final double BACK_SWITCH = -30.0;
+        public static final double BACK_FLAT = -90.0;
+
+        //Currently using numbers from Gizmo, will be changed.
+        public static final double ANGLE_MIN = -110;
+        public static final double ANGLE_MAX = 110;
+        public static final double POT_MIN = 0.065;
+        public static final double POT_MAX = 0.695;
+        public static final boolean MOTOR_INVERTED = false;
     }
     public class Shifter {
         public static final long STOP_MOTOR_TIME = 60;
